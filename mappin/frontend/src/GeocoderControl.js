@@ -30,7 +30,6 @@ export default function GeocoderControl(prop: GeocoderControlProps) {
       position: prop.position
     }
   );
-  console.log("GeocoderControl===");
 
   if (geocoder._map) {
     if (geocoder.getProximity() !== prop.proximity && prop.proximity !== undefined) {

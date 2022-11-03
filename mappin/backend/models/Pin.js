@@ -23,7 +23,7 @@ const PinSchema = new mongoose.Schema(
       min: 0,
       max: 5
     },
-    long: {
+    lng: {
       type: Number,
       required: true
     },
