@@ -30,6 +30,7 @@ export default function GeocoderControl(prop: GeocoderControlProps) {
       position: prop.position
     }
   );
+  console.log("GeocoderControl===");
 
   if (geocoder._map) {
     if (geocoder.getProximity() !== prop.proximity && prop.proximity !== undefined) {
@@ -106,5 +107,3 @@ export default function GeocoderControl(prop: GeocoderControlProps) {
 
 // yarn add @mui/icons-material
 // yarn add @mui/material @emotion/react @emotion/styled
-
-// yarn add timeago.js

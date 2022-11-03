@@ -15,13 +15,16 @@ import GeocoderControl from "./GeocoderControl";
 import MarkerPin from "./MarkerPin"; //검색결과 표시 마커
 import Pin from "./pin"; //RoomIcon 사용자 설정마커
 
+// import moment from "moment"; //몇시간전인지 알려주는 패키지
+// // 안써도 자동으로 한국 시간을 불러온다. 명확하게 하기 위해 import
+// import "moment/locale/ko";
+
 import "./app.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 import axios from "axios";
 import StarIcon from "@mui/icons-material/Star";
-//import { format } from "timeago.js";
 
 //const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX; // Set your mapbox token here
 const MAPBOX_TOKEN =
@@ -47,6 +50,7 @@ function App(prop) {
         console.log(allPins);
 
         setMarkers(allPins.data);
+        console.log();
       } catch (err) {
         console.log(err);
       }
@@ -59,7 +63,7 @@ function App(prop) {
 
   //useMemo 실행여부 확인해야함
   // const pins = useMemo(
-  //   () => (makePins(), [])
+  // () =>
   //  marker.map(p => (
   //     <Marker
   //       key={`marker-${p._id}`}
@@ -67,12 +71,8 @@ function App(prop) {
   //       latitude={p.lat}
   //       anchor="bottom"
   //       onClick={e => {
-  //         // If we let the click event propagates to the map, it will immediately close the popup
-  //         // with `closeOnClick: true`
   //         e.originalEvent.stopPropagation();
   //         setPopupInfo(p);
-
-  //         console.log("=====useMemo maing pins");
   //       }}>
   //       <Pin />
   //     </Marker>
@@ -119,7 +119,7 @@ function App(prop) {
         mapboxAccessToken={MAPBOX_TOKEN}
         // style={{ height: 600, width: 600 }}
         attributionControl={false}
-        // onDragEnd={onDragEnd}  //지도 움직일때마다 마커핀 이동
+        //onDragEnd={onDragEnd} //지도 움직일때마다 마커핀 이동
         onLoad={onLoadMap}>
         {markerPin.latitude && (
           <Marker latitude={markerPin.latitude} longitude={markerPin.longitude}>
@@ -174,6 +174,8 @@ function App(prop) {
               <span className="username">
                 Created by <b>{popupInfo.username}</b>
               </span>
+              {/* <span className="date">{moment().format(popupInfo.createdAt)}</span> */}
+
               {/* <span className="date">{format(popupInfo.createdAt)}</span> */}
             </div>
             {/* <img width="100%" src={popupInfo.image} /> */}
