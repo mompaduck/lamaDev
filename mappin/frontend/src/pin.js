@@ -15,7 +15,7 @@ function Pin({ size = 20 }) {
   return (
     <RoomIcon
       style={{
-        color: "#black",
+        color: "slateblue",
         cursor: "pointer"
       }}
     />

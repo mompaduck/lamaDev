@@ -25,6 +25,7 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 import axios from "axios";
 import StarIcon from "@mui/icons-material/Star";
+import RoomIcon from "@mui/icons-material/Room";
 
 //const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX; // Set your mapbox token here
 const MAPBOX_TOKEN =
@@ -101,6 +102,8 @@ function App(prop) {
       language._initialStyleUpdate();
     }
   }
+
+  const currentUsername = "Hoy";
   return (
     <>
       <Map
@@ -109,7 +112,7 @@ function App(prop) {
           longitude: 17.071727,
           // latitude: markerPin.latitude,
           // longitude: markerPin.longitude,
-          zoom: 7,
+          zoom: 5,
           bearing: 0,
           pitch: 0
         }}
@@ -150,7 +153,15 @@ function App(prop) {
               console.log("==Marker onClick() => setPopupInfo");
               console.log(p);
             }}>
-            <Pin />
+            {/* <Pin /> */}
+
+            <RoomIcon
+              style={{
+                fontSize: 20,
+                color: currentUsername === p.username ? "tomato" : "slateblue",
+                cursor: "pointer"
+              }}
+            />
           </Marker>
         ))}
 
